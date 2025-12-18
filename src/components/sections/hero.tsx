@@ -66,7 +66,7 @@ export function Hero () {
             solutions at <span className="font-semibold text-zinc-900 dark:text-zinc-100">adAIsolv</span>.
           </motion.div>
 
-          {/* Buttons */}
+         
           <motion.div 
             variants={itemVariants} 
             className="flex flex-col gap-4 min-[400px]:flex-row pt-4 w-full justify-center"
