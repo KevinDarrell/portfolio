@@ -79,12 +79,20 @@
 
 
 
-.bg-dot-pattern {
-  background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
-  background-size: 24px 24px;
+@layer utilities {
+  .bg-dot-pattern {
+    /* Warna background dasar */
+    background-color: transparent;
+    
+    /* Gambar titik-titik (Warna Slate-300 agar terlihat jelas) */
+    background-image: radial-gradient(#94a3b8 1px, transparent 1px);
+    
+    /* Ukuran jarak antar titik */
+    background-size: 20px 20px;
+  }
 }
 
-
+/* Opsional: Untuk Dark Mode nanti */
 .dark .bg-dot-pattern {
-  background-image: radial-gradient(#27272a 1px, transparent 1px);
+  background-image: radial-gradient(#334155 1px, transparent 1px);
 }

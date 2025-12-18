@@ -36,9 +36,10 @@ export function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-24 bg-zinc-50 dark:bg-zinc-900/50">
+ 
+    <section id="experience" className="py-24">
       <div className="container px-4 md:px-6">
-      
+       
          <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
             Professional Journey
@@ -50,7 +51,7 @@ export function Experience() {
 
        
         <div className="max-w-3xl mx-auto relative">
-         
+      
           <div className="absolute left-8 top-0 bottom-0 w-[2px] bg-zinc-200 dark:bg-zinc-800" />
 
           <div className="space-y-12">
@@ -60,7 +61,7 @@ export function Experience() {
 
               return (
                 <div key={index} className="relative flex gap-8 group">
-                
+                  
                   <div className={cn(
                     "absolute left-0 top-0 flex h-16 w-16 items-center justify-center rounded-full border-4 z-10 bg-white dark:bg-zinc-950 transition-colors group-hover:scale-110",
                      isCurrent 
@@ -68,15 +69,13 @@ export function Experience() {
                       : "border-zinc-100 text-zinc-400 dark:border-zinc-800 dark:text-zinc-500"
                   )}>
                     <Icon className="h-6 w-6" />
-                  
                     {isCurrent && (
                       <span className="absolute inset-0 rounded-full animate-ping bg-blue-400/20 dark:bg-blue-600/20"></span>
                     )}
                   </div>
 
-              
                   <Card className={cn(
-                    "ml-20 w-full p-6 border-zinc-200 dark:border-zinc-800 transition-all group-hover:shadow-md",
+                    "ml-20 w-full p-6 border-zinc-200 dark:border-zinc-800 transition-all group-hover:shadow-md bg-white/60 dark:bg-zinc-950/60 backdrop-blur-sm",
                     isCurrent ? "border-blue-200/50 dark:border-blue-900/50" : ""
                   )}>
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">

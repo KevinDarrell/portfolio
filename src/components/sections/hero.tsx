@@ -29,55 +29,68 @@ export function Hero () {
     };
 
     return (
-        <section className="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden py-12 md:py-24 lg:py-3">
-            <div className="absolute inset-0 -z-10 h-full w-full bg-zinc-50 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-size-[16px_16px] mask-[radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
-
-                <div className="container px-4 md:px-6">
-                    <motion.div
-                        className="flex flex-col items-center space-y-4 text-center"
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                    >
-
-                    <motion.div variants={itemVariants}>
-                        <div className="inline-block rounded-lg bg-zinc-100 px-3 py-1 text-sm text-zinc-500 ring-1 ring-inset ring-zinc-200">
-                            Available for new projects
-                        </div>
-                    </motion.div>
-
-                    <motion.div variants={itemVariants} className="space-y-2">
-                        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none text-zinc-900">
-                            Building Scalable Systems <br className="hidden md:block" />
-                            & Intuitive Workflows.
-                        </h1>
-                    </motion.div>
-
-                    <motion.div
-                        variants={itemVariants}
-                        className="mx-auto max-w-175 text-zinc-500 md:text-xl dark:text-zinc-400"
-                    >
-                        Currently engineering AI-driven
-                        solutions at <span className="font-semibold text-zinc-900">adAIsolv</span>.
-                    </motion.div>
-
-                    <motion.div variants={itemVariants} className="flex flex-col gap-2 min-[400px]:flex-row pt-4">
-                        <Link href="#work">
-                            <Button size="lg" className="h-12 px-8">
-                                View Selected Work
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </Link>
-
-                        <Link href="/resume.pdf" target="_blank">
-                            <Button variant="outline" size="lg" className="h-12 px-8">
-                                Download CV
-                                <Download className="ml-2 h-4 w-4" />
-                            </Button>
-                        </Link>
-                    </motion.div>
-                    </motion.div>
+    
+    <section className="relative flex min-h-[90vh] flex-col items-center justify-center py-12 md:py-24 lg:py-32">
+      <div className="container px-4 md:px-6">
+        <motion.div
+          className="flex flex-col items-center space-y-8 text-center"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+      
+          <motion.div variants={itemVariants}>
+            <div className="inline-block rounded-full bg-zinc-100/80 backdrop-blur-sm px-4 py-1.5 text-sm font-medium text-zinc-600 ring-1 ring-inset ring-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-400 dark:ring-zinc-800">
+              <span className="relative h-2 w-2 inline-flex mr-2">
+                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              Available for new projects
             </div>
-        </section>               
-    );
+          </motion.div>
+
+       
+          <motion.div variants={itemVariants} className="space-y-4 max-w-4xl">
+            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-zinc-900 dark:text-zinc-50">
+              Building Scalable Systems <br className="hidden md:block" />
+              & Intuitive Workflows.
+            </h1>
+          </motion.div>
+
+    
+          <motion.div
+            variants={itemVariants}
+            className="mx-auto max-w-[700px] text-zinc-500 md:text-xl dark:text-zinc-400 leading-relaxed"
+          >
+            Full Stack Engineer & System Analyst. Currently engineering AI-driven
+            solutions at <span className="font-semibold text-zinc-900 dark:text-zinc-100">adAIsolv</span>.
+          </motion.div>
+
+          {/* Buttons */}
+          <motion.div 
+            variants={itemVariants} 
+            className="flex flex-col gap-4 min-[400px]:flex-row pt-4 w-full justify-center"
+          >
+            <Link href="#work">
+              <Button size="lg" className="h-12 px-8 w-full min-[400px]:w-auto">
+                View Selected Work
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+            
+            <a 
+              href="/resume.pdf" 
+              download="M_Kevin_Darrell_Resume.pdf"
+              className="w-full min-[400px]:w-auto"
+            >
+              <Button variant="outline" size="lg" className="h-12 px-8 w-full bg-white/50 dark:bg-zinc-950/50 backdrop-blur-sm">
+                Download CV
+                <Download className="ml-2 h-4 w-4" />
+              </Button>
+            </a>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
 }
