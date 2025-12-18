@@ -1,6 +1,8 @@
 import { Navbar } from "@/components/layout/navbar";
+import { Experience } from "@/components/sections/experience";
 import { Hero } from "@/components/sections/hero";
 import { SelectedWork } from "@/components/sections/selected-work";
+import { Skills } from "@/components/sections/skills";
 
 export default function Home() {
   return (
@@ -10,12 +12,8 @@ export default function Home() {
       <div className="pt-16">
       <Hero />
       <SelectedWork />
-      {/* Future Sections to be added:
-        <Skills />
-        <Experience />
-        <Projects />
-        <Contact />
-      */}
+      <Skills />
+      <Experience />
       </div>
     </main>
   );
