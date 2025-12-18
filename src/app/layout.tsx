@@ -1,30 +1,38 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+// CRITICAL FIX: This import must be here for Tailwind to load
+import "./globals.css"; 
 import { cn } from "@/lib/utils";
 
-const inter = Inter ({ subsets: ["latin"], variable: "--font-sans" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "M Kevin Darrell - Full Stack Engineer",
-  description:
-    "Portfolio of a Full Stack Engineer & System Analyst.",
+  title: "Portfolio | Full Stack Engineer",
+  description: "Portfolio of a Full Stack Engineer & System Analyst.",
 };
 
-export default function RootLayout ({
+export default function RootLayout({
   children,
-}: Readonly <{
+}: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
       <body
-      className={cn(
-        "min-h-screen bg-zinc-50 font-sans antialiased text-zinc-900",
-        inter.variable
-      )}
+        className={cn(
+          "min-h-screen font-sans antialiased relative bg-background text-foreground",
+          inter.variable
+        )}
       >
-        {children}
+        {/* Background Pattern Layer */}
+        <div className="fixed inset-0 -z-10 h-full w-full bg-white dark:bg-zinc-950">
+           <div className="absolute h-full w-full bg-dot-pattern [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
+        </div>
+
+        {/* Content Layer */}
+        <div className="relative flex flex-col min-h-screen">
+          {children}
+        </div>
       </body>
     </html>
   );

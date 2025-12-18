@@ -16,10 +16,13 @@ export interface Experience {
 
 export interface Project {
   title: string;
+  role: string;
   description: string;
-  tags: string[];
+  technologies: string[];
+  tags?: string[];
   link?: string;
   github?: string;
+  metric: string;
   image?: string;
 }
 
@@ -31,4 +34,5 @@ export interface ResumeData {
   socials: SocialLink[];
   experience: Experience[];
   skills: string[];
+  projects: Project[];
 }

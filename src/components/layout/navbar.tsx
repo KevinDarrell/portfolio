@@ -9,10 +9,10 @@ export function Navbar() {
     ];
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-            <div className="container flex h-14 max-w-screen-2xl items-center justify-between">
-                <Link className="mr-6 flex items-center space-x-2" href="/">
-                    <span className="font-bold text-lg tracking-tight">M Kevin Darrell</span>
+        <header className="fixed top-0 left-0 z-50 w-full border-b border-zinc-200/50 bg-white/80 backdrop-blur-md dark:bg-zinc-950/80 dark:border-zinc-800/50">
+            <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
+                <Link className="flex items-center space-x-2" href="/">
+                    <span className="font-bold text-lg tracking-tight text-zinc-900 dark:text-zinc-100">M Kevin Darrell</span>
                 </Link>
 
                 <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
@@ -20,7 +20,7 @@ export function Navbar() {
                         <Link
                         key={link.name}
                         href={link.href}
-                        className="transition-colors hover:text-foreground/80 text-foreground/60"
+                        className="text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                         >
                             {link.name}
                         </Link>
@@ -33,8 +33,8 @@ export function Navbar() {
                     </Link>
                 </nav>
 
-                <button className="flex items-center space-x-2 md:hidden">
-                    <span className="font-bold">Menu</span>
+                <button className="flex md:hidden p-2 text-zinc-900 dark:text-zinc-100">
+                    <span className="font-semibold text-sm">Menu</span>
                 </button>
             </div>
         </header>
