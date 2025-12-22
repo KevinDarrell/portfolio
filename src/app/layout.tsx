@@ -38,9 +38,9 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
+  
       >
-        <div className="fixed inset-0 -z-10 h-full w-full bg-white dark:bg-zinc-950">
+        <div className="fixed inset-0 -z-10 h-full w-full bg-white dark:bg-zinc-950 transition-colors duration-500 ease-in-out">
           <div className="absolute h-full w-full bg-dot-pattern [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
         </div>
 
