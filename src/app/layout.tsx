@@ -2,18 +2,20 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { resumeData } from "@/data/resume";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "M Kevin Darrell | Full Stack Engineer & System Analyst",
   description: "Portfolio of M Kevin Darrell, specializing in scalable backend systems and modern frontend interfaces.",
+  keywords: resumeData.skills,
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://portfolio-kevin-darrell.vercel.app/", 
     title: "M Kevin Darrell | Full Stack Engineer",
-    description: "Building scalable backend systems and intuitive frontend designs.",
+    description: "Building Scalable Systems & Intuitive Workflows.",
     siteName: "M Kevin Darrell Portfolio",
   },
 };
