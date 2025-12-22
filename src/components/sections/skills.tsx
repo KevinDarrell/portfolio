@@ -12,6 +12,10 @@ import {
   SiFigma,
   SiGit,
   SiTypescript,
+  SiJavascript,
+  SiExpress,
+  SiNodedotjs,
+  SiNotion,
 } from "react-icons/si";
 import { Database, Layout, Settings2 } from "lucide-react";
 
@@ -23,11 +27,14 @@ export function Skills() {
       cols: "md:col-span-2",
       bg: "bg-blue-50 dark:bg-blue-950/20",
       skills: [
-        { name: "Spring Boot", icon: SiSpringboot, color: "text-green-600" },
+        { name: "JavaScript", icon: SiJavascript, color: "text-yellow-600" },
+        { name: "NodeJs", icon: SiNodedotjs, color: "text-green-600" },
         { name: "NestJS", icon: SiNestjs, color: "text-red-600" },
+        { name: "ExpressJS", icon: SiExpress, color: "text-black-600" },
         { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-600" },
         { name: "Prisma", icon: SiPrisma, color: "text-teal-600 dark:text-teal-400" },
         { name: "TypeScript", icon: SiTypescript, color: "text-blue-500" },
+        { name: "Spring Boot", icon: SiSpringboot, color: "text-green-600" },
       ],
     },
     {
@@ -49,9 +56,10 @@ export function Skills() {
       bg: "bg-emerald-50 dark:bg-emerald-950/20",
       skills: [
         { name: "Docker", icon: SiDocker, color: "text-blue-500" },
-        { name: "Figma", icon: SiFigma, color: "text-purple-500" },
         { name: "Git", icon: SiGit, color: "text-orange-600" },
-        { name: "System Analysis", icon: Settings2, color: "text-zinc-500" }, // Generic fallback for concept
+        { name: "Notion", icon: SiNotion, color: "text-black-500" },
+        { name: "Figma", icon: SiFigma, color: "text-purple-500" },
+        { name: "System Analysis", icon: Settings2, color: "text-zinc-500" }, 
       ],
     },
   ];
@@ -61,7 +69,7 @@ export function Skills() {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
-            Technical Arsenal
+            Technical Stack
           </h2>
           <p className="max-w-[700px] text-zinc-500 md:text-xl/relaxed dark:text-zinc-400">
              The specific tools I use to engineer scalable systems.
