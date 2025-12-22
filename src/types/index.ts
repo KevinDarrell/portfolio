@@ -7,8 +7,8 @@ export interface SocialLink {
 export interface Experience {
     company: string;
     role: string;
-    startDate: string;
-    endDate: string;
+    date: string;
+    type?: "work" | "education";
     description: string;
     technologies: string[];
     logo?: string;

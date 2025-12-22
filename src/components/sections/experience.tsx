@@ -2,39 +2,9 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Briefcase, GraduationCap } from "lucide-react";
+import { resumeData } from "@/data/resume";
 
 export function Experience() {
-  const timelineData = [
-    {
-      role: "Full Stack Engineer Intern",
-      company: "adAIsolv",
-      date: "Present",
-      type: "work",
-      highlight: "Currently engineering AI-driven solutions and integrating complex backend systems with intuitive frontend interfaces.",
-    },
-    {
-      role: "Software Engineer Intern",
-      company: "PT. Charoen Pokphand",
-      date: "Aug 2025 - Dec 2025", 
-      type: "work",
-      highlight: "Built a real-time router monitoring system using WebSocket and Spring Boot, reducing manual checks by 100%.",
-    },
-    {
-      role: "System Analyst Intern",
-      company: "PT. Charoen Pokphand",
-      date: "Dec 2023 - Feb 2024",
-      type: "work",
-      highlight: "Designed streamlined leave management workflows using BPMN standards, improving HR process efficiency.",
-    },
-    {
-      role: "Information Systems Graduate",
-      company: "Sriwijaya University",
-      date: "2020 - 2024",
-      type: "education",
-      highlight: "Graduated with GPA 3.9/4.0. Focused on Software Engineering and Database Systems.",
-    },
-  ];
-
   return (
  
     <section id="experience" className="py-24">
@@ -55,12 +25,15 @@ export function Experience() {
           <div className="absolute left-8 top-0 bottom-0 w-[2px] bg-zinc-200 dark:bg-zinc-800" />
 
           <div className="space-y-12">
-            {timelineData.map((item, index) => {
-              const isCurrent = item.date === "Present";
-              const Icon = item.type === 'work' ? Briefcase : GraduationCap;
+            {resumeData.experience.map((item, index) => {
+              const isCurrent = item.date.toLowerCase().includes("present");
 
+              const type = ( item as any ).type || "work";
+              const Icon = type === 'education' ? GraduationCap : Briefcase;
+            
               return (
                 <div key={index} className="relative flex gap-8 group">
+                  
                   
                   <div className={cn(
                     "absolute left-0 top-0 flex h-16 w-16 items-center justify-center rounded-full border-4 z-10 bg-white dark:bg-zinc-950 transition-colors group-hover:scale-110",
@@ -74,6 +47,7 @@ export function Experience() {
                     )}
                   </div>
 
+           
                   <Card className={cn(
                     "ml-20 w-full p-6 border-zinc-200 dark:border-zinc-800 transition-all group-hover:shadow-md bg-white/60 dark:bg-zinc-950/60 backdrop-blur-sm",
                     isCurrent ? "border-blue-200/50 dark:border-blue-900/50" : ""
@@ -90,8 +64,18 @@ export function Experience() {
                       </Badge>
                     </div>
                     <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                      {item.highlight}
+                      {item.description}
                     </p>
+                    
+                    {item.technologies && item.technologies.length > 0 && (
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {item.technologies.map((tech) => (
+                          <span key={tech} className="text-xs text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded-md">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </Card>
                 </div>
               );

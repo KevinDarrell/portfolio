@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://your-portfolio-url.com", 
+    url: "https://portfolio-kevin-darrell.vercel.app/", 
     title: "M Kevin Darrell | Full Stack Engineer",
     description: "Building scalable backend systems and intuitive frontend designs.",
     siteName: "M Kevin Darrell Portfolio",
@@ -31,12 +31,11 @@ export default function RootLayout({
           inter.variable
         )}
       >
-        {/* Background Pattern Layer */}
+
         <div className="fixed inset-0 -z-10 h-full w-full bg-white dark:bg-zinc-950">
           <div className="absolute h-full w-full bg-dot-pattern [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
         </div>
 
-        {/* Content Layer */}
         <div className="relative flex flex-col min-h-screen">{children}</div>
       </body>
     </html>

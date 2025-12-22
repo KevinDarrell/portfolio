@@ -29,22 +29,36 @@ export const resumeData: ResumeData = {
     ],
     experience: [
     {
-      company: "adAIsolv",
+      company: "datAIsolv",
       role: "Full Stack Engineer Intern",
-      startDate: "Dec 2025",
-      endDate: "Present",
-      description:
-        "Contributing to full-stack development tasks, integrating backend services with frontend interfaces, and optimizing application performance.",
+      date: "Dec 2025 - Present", 
+      description: "Contributing to full-stack development tasks, integrating backend services with frontend interfaces, and optimizing application performance.",
+      type: "work", 
       technologies: ["React", "Next.js", "TypeScript"],
     },
     {
       company: "PT. Charoen Pokphand",
-      role: "Software Engineer Intern & System Analyst Intern",
-      startDate: "Aug 2025", 
-      endDate: "Dec 2025",
-      description:
-        "Analyzed system requirements and developed software solutions to streamline operational workflows.",
-      technologies: ["Java", "SQL", "System Analysis"],
+      role: "Software Engineer Intern",
+      date: "Aug 2025 - Dec 2025",
+      description: "Built a real-time router monitoring system using WebSocket and Spring Boot, reducing manual checks by 100%.",
+      type: "work",
+      technologies: ["Java", "SQL", "Spring Boot"],
+    },
+    {
+      company: "PT. Charoen Pokphand",
+      role: "System Analyst Intern",
+      date: "Dec 2023 - Feb 2024",
+      description: "Designed streamlined leave management workflows using BPMN standards, improving HR process efficiency.",
+      type: "work",
+      technologies: ["BPMN", "System Analysis"],
+    },
+    {
+      company: "Sriwijaya University",
+      role: "Information Systems Graduate",
+      date: "2021 - 2024",
+      description: "Graduated with GPA 3.9/4.0. Focused on Software Engineering and Database Systems.",
+      type: "education", 
+      technologies: [],
     },
   ],
 
