@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react"; 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const navItems = [
   { name: "Selected Work", href: "#projects" },
@@ -52,6 +53,9 @@ export function Navbar() {
                 {item.name}
               </Link>
             ))}
+            
+            <ThemeToggle />
+
             <Button asChild variant="default" size="sm">
               <a href="/resume.pdf" download="M_Kevin_Darrell_CV.pdf">
                 Resume
@@ -59,7 +63,10 @@ export function Navbar() {
             </Button>
           </nav>
 
-          <button
+            <div className="flex items-center gap-4 md:hidden">
+                <ThemeToggle />
+
+            <button
             className="md:hidden p-2 text-zinc-600 dark:text-zinc-300"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
@@ -68,7 +75,7 @@ export function Navbar() {
           </button>
         </div>
       </div>
-
+        </div>
     
       {isOpen && (
         <div className="md:hidden absolute top-16 left-0 w-full bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 shadow-xl animate-in slide-in-from-top-5">

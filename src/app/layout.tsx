@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { resumeData } from "@/data/resume";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -26,19 +27,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={cn(
           "min-h-screen font-sans antialiased relative bg-background text-foreground",
           inter.variable
         )}
       >
-
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+      >
         <div className="fixed inset-0 -z-10 h-full w-full bg-white dark:bg-zinc-950">
           <div className="absolute h-full w-full bg-dot-pattern [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
         </div>
 
         <div className="relative flex flex-col min-h-screen">{children}</div>
+        </ThemeProvider> 
       </body>
     </html>
   );
