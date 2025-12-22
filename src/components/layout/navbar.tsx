@@ -1,42 +1,96 @@
+"use client"; 
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react"; 
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
+const navItems = [
+  { name: "Selected Work", href: "#projects" },
+  { name: "Skills", href: "#skills" },
+  { name: "Experience", href: "#experience" },
+];
+
 export function Navbar() {
-    const navLinks = [
-        { name: "Work", href: "#work" },
-        { name: "Experience", href: "#experience" },
-        { name: "About", href: "#about" },
-    ];
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
-    return (
-        <header className="fixed top-0 left-0 z-50 w-full border-b border-zinc-200/50 bg-white/80 backdrop-blur-md dark:bg-zinc-950/80 dark:border-zinc-800/50">
-            <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
-                <Link className="flex items-center space-x-2" href="/">
-                    <span className="font-bold text-lg tracking-tight text-zinc-900 dark:text-zinc-100">M Kevin Darrell</span>
-                </Link>
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-                <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-                    {navLinks.map((link) => (
-                        <Link
-                        key={link.name}
-                        href={link.href}
-                        className="text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
+  return (
+    <header
+      className={cn(
+        "fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent",
+        scrolled
+          ? "bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-zinc-200 dark:border-zinc-800 shadow-sm"
+          : "bg-transparent"
+      )}
+    >
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link href="/" className="text-lg font-bold tracking-tight">
+            M Kevin Darrell<span className="text-blue-600">.</span>
+          </Link>
 
-                    <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                        <Button variant="secondary" size="sm" className="px-4">
-                            Resume
-                        </Button>
-                    </Link>
-                </nav>
+          <nav className="hidden md:flex items-center gap-6">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              >
+                {item.name}
+              </Link>
+            ))}
+            <Button asChild variant="default" size="sm">
+              <a href="/resume.pdf" download="M_Kevin_Darrell_CV.pdf">
+                Resume
+              </a>
+            </Button>
+          </nav>
 
-                <button className="flex md:hidden p-2 text-zinc-900 dark:text-zinc-100">
-                    <span className="font-semibold text-sm">Menu</span>
-                </button>
-            </div>
-        </header>
-    );
+          <button
+            className="md:hidden p-2 text-zinc-600 dark:text-zinc-300"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
+
+    
+      {isOpen && (
+        <div className="md:hidden absolute top-16 left-0 w-full bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 shadow-xl animate-in slide-in-from-top-5">
+          <div className="flex flex-col p-4 space-y-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400"
+                onClick={() => setIsOpen(false)} 
+              >
+                {item.name}
+              </Link>
+            ))}
+            <Button asChild className="w-full">
+              <a href="/resume.pdf" download="M_Kevin_Darrell_CV.pdf">
+                Download Resume
+              </a>
+            </Button>
+          </div>
+        </div>
+      )}
+    </header>
+  );
 }
