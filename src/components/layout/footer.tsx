@@ -21,7 +21,7 @@ export function Footer() {
           </a>
         </div>
 
-        {/* Bottom Section */}
+
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 border-t border-zinc-200 dark:border-zinc-800 pt-8">
           <div className="flex flex-col items-center md:items-start gap-1">
             <span className="font-bold text-lg">M Kevin Darrell</span>

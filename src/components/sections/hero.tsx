@@ -63,7 +63,7 @@ export function Hero () {
             className="mx-auto max-w-[700px] text-zinc-500 md:text-xl dark:text-zinc-400 leading-relaxed"
           >
             Full Stack Engineer & System Analyst. Currently engineering AI-driven
-            solutions at <span className="font-semibold text-zinc-900 dark:text-zinc-100">adAIsolv</span>.
+            solutions at <span className="font-semibold text-zinc-900 dark:text-zinc-100">datAIsolv</span>.
           </motion.div>
 
          
