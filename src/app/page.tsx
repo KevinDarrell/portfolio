@@ -5,8 +5,13 @@ import { Hero } from "@/components/sections/hero";
 import { SelectedWork } from "@/components/sections/selected-work";
 import { Skills } from "@/components/sections/skills";
 import { Contact } from "@/components/sections/contact";
+import { Guestbook } from "@/components/sections/guestbook"; 
+import { getGuestbookEntries } from "@/app/actions/guestbook";
 
-export default function Home() {
+
+export default async function Home() {
+  const guestbookEntries = await getGuestbookEntries();
+
   return (
     <main className="relative flex flex-col min-h-screen">
       <Navbar />
@@ -17,6 +22,7 @@ export default function Home() {
       <Skills />
       <Experience />
       </div>
+      <Guestbook initialEntries={guestbookEntries} />
       <Contact />
       <Footer />
     </main>

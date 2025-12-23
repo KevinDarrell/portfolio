@@ -3,7 +3,7 @@
 
 import { useActionState } from "react"; 
 import { useFormStatus } from "react-dom"; 
-import { sendContactEmail } from "@/actions/send-email";
+import { sendContactEmail } from "@/app/actions/send-email";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Send, CheckCircle2, AlertCircle } from "lucide-react";
