@@ -97,9 +97,11 @@ export function Guestbook({ initialEntries }: { initialEntries: any[] }) {
               <SubmitButton />
             </form>
           </Card>
-
-         
+          
           <div className="space-y-4">
+             <h3 className="font-semibold text-lg border-b pb-2">Recent Messages</h3>
+      
+             <div className="h-[400px] overflow-y-auto pr-2 space-y-4 scrollbar-thin scrollbar-thumb-zinc-200 dark:scrollbar-thumb-zinc-800">
             {initialEntries.length === 0 ? (
               <p className="text-center text-zinc-500 italic">No messages yet. Be the first!</p>
             ) : (
@@ -123,6 +125,7 @@ export function Guestbook({ initialEntries }: { initialEntries: any[] }) {
                 </motion.div>
               ))
             )}
+          </div>
           </div>
 
         </div>
