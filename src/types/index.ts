@@ -36,3 +36,10 @@ export interface ResumeData {
   skills: string[];
   projects: Project[];
 }
+
+export interface GuestbookEntry {
+  id: string;
+  name: string;
+  message: string;
+  createdAt: Date; 
+}

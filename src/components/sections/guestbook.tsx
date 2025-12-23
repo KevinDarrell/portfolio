@@ -47,63 +47,62 @@ export function Guestbook({ initialEntries }: { initialEntries: any[] }) {
   }, [state.success]);
 
   return (
-    <section id="guestbook" className="py-24 bg-zinc-50 dark:bg-zinc-900/30">
-      <div className="container px-4 md:px-6">
-        <div className="max-w-2xl mx-auto space-y-8">
+    <div className="flex flex-col h-full gap-6">
+      
+      <div className="space-y-2 text-left">
+        <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
+          Sign My Guestbook
+        </h2>
+        <p className="text-muted-foreground md:text-lg">
+          Leave a message or say hello!
+        </p>
+      </div>
+
+      <Card className="p-6 md:p-8 shadow-sm border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50">
+        <form ref={formRef} action={formAction} className="space-y-4">
           
-       
-          <div className="text-center space-y-2">
-            <h2 className="text-3xl font-bold">Sign My Guestbook</h2>
-            <p className="text-zinc-500">Leave a message or say hello!</p>
+          {state.error && (
+            <div className="p-3 bg-red-50 text-red-600 text-sm rounded-md border border-red-200">
+              {state.error}
+            </div>
+          )}
+          
+          {state.success && (
+            <div className="p-3 bg-green-50 text-green-600 text-sm rounded-md border border-green-200">
+              Message added! It will appear below shortly.
+            </div>
+          )}
+
+          <div>
+            <input
+              name="name"
+              placeholder="Your Name"
+              className="w-full h-11 px-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+              required
+            />
+            {state.errors?.name && <p className="text-red-500 text-xs mt-1">{state.errors.name[0]}</p>}
           </div>
 
-          <Card className="p-6">
-            <form ref={formRef} action={formAction} className="space-y-4">
-              
-            
-              {state.error && (
-                <div className="p-3 bg-red-50 text-red-600 text-sm rounded-md border border-red-200">
-                  {state.error}
-                </div>
-              )}
-              {state.success && (
-                <div className="p-3 bg-green-50 text-green-600 text-sm rounded-md border border-green-200">
-                  Message added! It will appear below shortly.
-                </div>
-              )}
+          <div>
+            <textarea
+              name="message"
+              placeholder="Your Message..."
+              rows={3}
+              className="w-full px-4 py-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-transparent resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+              required
+            />
+            {state.errors?.message && <p className="text-red-500 text-xs mt-1">{state.errors.message[0]}</p>}
+          </div>
 
-             
-              <div>
-                <input
-                  name="name"
-                  placeholder="Your Name"
-                  className="w-full p-3 rounded-md border border-zinc-200 dark:border-zinc-800 bg-background focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  required
-                />
-                {state.errors?.name && <p className="text-red-500 text-xs mt-1">{state.errors.name[0]}</p>}
-              </div>
-
-              <div>
-                <textarea
-                  name="message"
-                  placeholder="Your Message..."
-                  rows={3}
-                  className="w-full p-3 rounded-md border border-zinc-200 dark:border-zinc-800 bg-background resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  required
-                />
-                {state.errors?.message && <p className="text-red-500 text-xs mt-1">{state.errors.message[0]}</p>}
-              </div>
-
-              <SubmitButton />
-            </form>
-          </Card>
-          
-          <div className="space-y-4">
-             <h3 className="font-semibold text-lg border-b pb-2">Recent Messages</h3>
+          <SubmitButton />
+        </form>
+      </Card>
       
-             <div className="h-[400px] overflow-y-auto pr-2 space-y-4 scrollbar-thin scrollbar-thumb-zinc-200 dark:scrollbar-thumb-zinc-800">
+      <div className="space-y-4 pt-2">
+          <h3 className="font-semibold text-lg border-b pb-2">Recent Messages</h3>
+          <div className="h-[350px] overflow-y-auto pr-2 space-y-4 scrollbar-thin scrollbar-thumb-zinc-200 dark:scrollbar-thumb-zinc-800">
             {initialEntries.length === 0 ? (
-              <p className="text-center text-zinc-500 italic">No messages yet. Be the first!</p>
+              <p className="text-zinc-500 italic text-sm">No messages yet. Be the first!</p>
             ) : (
               initialEntries.map((entry) => (
                 <motion.div
@@ -114,22 +113,20 @@ export function Guestbook({ initialEntries }: { initialEntries: any[] }) {
                   className="p-4 rounded-lg border bg-white dark:bg-zinc-950 shadow-sm"
                 >
                   <div className="flex justify-between items-start mb-2">
-                    <span className="font-semibold">{entry.name}</span>
+                    <span className="font-semibold text-sm">{entry.name}</span>
                     <span className="text-xs text-zinc-400">
                       {new Date(entry.createdAt).toLocaleDateString()}
                     </span>
                   </div>
-                  <p className="text-zinc-600 dark:text-zinc-300 text-sm">
+                  <p className="text-zinc-600 dark:text-zinc-300 text-sm break-words">
                     {entry.message}
                   </p>
                 </motion.div>
               ))
             )}
           </div>
-          </div>
-
-        </div>
       </div>
-    </section>
+
+    </div>
   );
 }

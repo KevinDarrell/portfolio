@@ -1,6 +1,5 @@
 "use client";
 
-
 import { useActionState } from "react"; 
 import { useFormStatus } from "react-dom"; 
 import { sendContactEmail } from "@/app/actions/send-email";
@@ -45,47 +44,32 @@ export function Contact() {
   const [state, formAction] = useActionState(sendContactEmail, {});
 
   return (
-    <section id="contact" className="py-24 bg-zinc-50 dark:bg-zinc-950/50">
-      <div className="container px-4 md:px-6">
-        <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={controls}
-          variants={fadeInUpVariants}
-          className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
-        >
-          <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
-            Let's Build Something Together
-          </h2>
-          <p className="max-w-[700px] text-zinc-500 md:text-xl/relaxed dark:text-zinc-400">
-            Have a project in mind? Drop me a message and I'll get back to you within 24 hours.
-          </p>
-        </motion.div>
+    <div className="flex flex-col h-full gap-6">
+      <div className="space-y-2 text-left">
+        <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
+           Let's Build Something
+        </h2>
+        <p className="text-muted-foreground md:text-lg">
+           Have a project in mind? Drop me a message and I'll get back to you within 24 hours.
+        </p>
+      </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={controls}
-          variants={fadeInUpVariants}
-          className="max-w-2xl mx-auto"
-        >
-          <Card className="p-8">
-            <form action={formAction} className="space-y-6">
-              
-              
-              {state.success && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="flex items-center gap-3 p-4 bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 rounded-lg"
-                >
-                  <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 shrink-0" />
-                  <p className="text-sm font-medium text-green-900 dark:text-green-100">
-                    Message sent successfully! I'll get back to you soon.
-                  </p>
-                </motion.div>
-              )}
 
-              
+      <Card className="p-6 md:p-8 shadow-sm border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 flex-1">
+        <form action={formAction} className="space-y-5">
+          
+          {state.success && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="flex items-center gap-3 p-4 bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 rounded-lg"
+            >
+              <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 shrink-0" />
+              <p className="text-sm font-medium text-green-900 dark:text-green-100">
+                Message sent successfully!
+              </p>
+            </motion.div>
+          )}          
               {state.error && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
@@ -162,8 +146,6 @@ export function Contact() {
               <SubmitButton />
             </form>
           </Card>
-        </motion.div>
       </div>
-    </section>
   );
 }

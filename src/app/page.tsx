@@ -28,14 +28,9 @@ const Experience = nextDynamic(
   { loading: () => <div className="h-64" /> }
 );
 
-const Contact = nextDynamic(
-  () => import("@/components/sections/contact").then((mod) => mod.Contact),
-  { loading: () => <div className="h-64" /> }
-);
-
-const Guestbook = nextDynamic(
-  () => import("@/components/sections/guestbook").then((mod) => mod.Guestbook),
-  { loading: () => <div className="h-64" /> }
+const CombinedFooter = nextDynamic(
+  () => import("@/components/sections/combined-footer").then((mod) => mod.CombinedFooter),
+  { loading: () => <div className="h-96 animate-pulse bg-zinc-100 dark:bg-zinc-800 rounded-xl my-24" /> }
 );
 
 
@@ -54,8 +49,7 @@ export default async function Home() {
       <Skills />
       <Experience />
       </div>
-      <Guestbook initialEntries={guestbookEntries} />
-      <Contact />
+      <CombinedFooter initialEntries={guestbookEntries} />
       <Footer />
     </main>
     </>
