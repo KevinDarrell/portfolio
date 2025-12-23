@@ -1,12 +1,13 @@
-import dynamic from "next/dynamic";
+import nextDynamic from "next/dynamic";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { Hero } from "@/components/sections/hero";
 import { getGuestbookEntries } from "@/app/actions/guestbook";
 import { StructuredData } from "@/components/structured-data";
 
+export const dynamic = "force-dynamic";
 
-const SelectedWork = dynamic(
+const SelectedWork = nextDynamic(
   () => import("@/components/sections/selected-work").then((mod) => mod.SelectedWork),
   {
     loading: () => (
@@ -17,22 +18,22 @@ const SelectedWork = dynamic(
   }
 );
 
-const Skills = dynamic(
+const Skills = nextDynamic(
   () => import("@/components/sections/skills").then((mod) => mod.Skills),
   { loading: () => <div className="h-64" /> } 
 );
 
-const Experience = dynamic(
+const Experience = nextDynamic(
   () => import("@/components/sections/experience").then((mod) => mod.Experience),
   { loading: () => <div className="h-64" /> }
 );
 
-const Contact = dynamic(
+const Contact = nextDynamic(
   () => import("@/components/sections/contact").then((mod) => mod.Contact),
   { loading: () => <div className="h-64" /> }
 );
 
-const Guestbook = dynamic(
+const Guestbook = nextDynamic(
   () => import("@/components/sections/guestbook").then((mod) => mod.Guestbook),
   { loading: () => <div className="h-64" /> }
 );
