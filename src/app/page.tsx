@@ -1,18 +1,49 @@
+import dynamic from "next/dynamic";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
-import { Experience } from "@/components/sections/experience";
 import { Hero } from "@/components/sections/hero";
-import { SelectedWork } from "@/components/sections/selected-work";
-import { Skills } from "@/components/sections/skills";
-import { Contact } from "@/components/sections/contact";
-import { Guestbook } from "@/components/sections/guestbook"; 
 import { getGuestbookEntries } from "@/app/actions/guestbook";
+import { StructuredData } from "@/components/structured-data";
+
+
+const SelectedWork = dynamic(
+  () => import("@/components/sections/selected-work").then((mod) => mod.SelectedWork),
+  {
+    loading: () => (
+      <div className="py-32 flex justify-center text-zinc-400 animate-pulse">
+        Loading Projects...
+      </div>
+    ),
+  }
+);
+
+const Skills = dynamic(
+  () => import("@/components/sections/skills").then((mod) => mod.Skills),
+  { loading: () => <div className="h-64" /> } 
+);
+
+const Experience = dynamic(
+  () => import("@/components/sections/experience").then((mod) => mod.Experience),
+  { loading: () => <div className="h-64" /> }
+);
+
+const Contact = dynamic(
+  () => import("@/components/sections/contact").then((mod) => mod.Contact),
+  { loading: () => <div className="h-64" /> }
+);
+
+const Guestbook = dynamic(
+  () => import("@/components/sections/guestbook").then((mod) => mod.Guestbook),
+  { loading: () => <div className="h-64" /> }
+);
 
 
 export default async function Home() {
   const guestbookEntries = await getGuestbookEntries();
 
   return (
+    <>
+    <StructuredData />
     <main className="relative flex flex-col min-h-screen">
       <Navbar />
 
@@ -26,5 +57,6 @@ export default async function Home() {
       <Contact />
       <Footer />
     </main>
+    </>
   );
 }
